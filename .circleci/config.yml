@@ -12,10 +12,6 @@ jobs:
             - run: npm install
             - run: npm test
   deploy:
-    # steps:
-    #   - add_ssh_keys:
-    #     fingerprints:
-    #      - "73:c4:69:73:80:6c:cf:ed:d1:12:15:ba:dd:eb:f7:03"
     machine:
       enabled: true
     steps:
@@ -29,8 +25,8 @@ workflows:
     jobs:
       - build-and-test
       - deploy:
-        requires:
-          - build-and-test
-        filters:
-          branches:
-            only: master
+          requires:
+            - build-and-test
+          filters:
+            branches:
+              only: master
